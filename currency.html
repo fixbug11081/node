@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <div>
+    <label for="Money">Money</label>
+    <span><a href="#" data-toggle="tooltip" title="Money "> <i class="fa fa-question-circle" aria-hidden="true"></i></a></span>
+    <select id="currency" class=currency>
+      <option value="de-DE">EUR</option>
+      <option value="ja-JP">JPY</option>
+      <option value="en-IN">INR</option>
+    </select>
+    <input class="form-control-input currency-format" id="currency-format" placeholder="Money" name="CD0001" type="text" value=0>
+  </div>
+</body>
+
+</html>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // currency formatting on change of country
+                     // currency formatting on change of country
+                $('.currency').change( function() {
+                      let currencySymbol = $('.currency').val();
+                      let currencyCoin = $('.currency option:selected').text();
+                      let money = $(".currency-format").val();
+                      var formatter = new Intl.NumberFormat(currencySymbol,{
+                                            style: 'currency',
+                                            currency: currencyCoin,
+                                            minimumFractionDigits: 2
+                                          });
+
+                      if (!isNaN(money)) {
+                          money =  formatter.format(money);
+                          $(this).text(currencyCoin);
+                          $('.currency-format').val(money);
+                      } else {
+                                if(money !== "undefined" || money !== null){
+
+                                                  var dot = new RegExp(".");
+                                                  if(dot.test(money)){
+                                                      var amount = money.replace(/[^0-9]+/g,"");
+                                                      amount = amount.slice(0,-2);
+                                                    }
+                                                      amount =  formatter.format(amount);
+                                                      $('.currency-format').val(amount);
+                                }else{
+                                    alert("Please fill digits only");
+                                }
+                      }
+                  });
+
+   $('.currency-format').change( function() {
+      let currencySymbol = $('.currency').val();
+      let currencyCoin = $('.currency option:selected').text();
+      let money = $(this).val();
+
+      var formatter = new Intl.NumberFormat(currencySymbol,{
+        style: 'currency',
+        currency: currencyCoin,
+        minimumFractionDigits: 2
+      });
+      alert(typeof(formatter));
+      if (!isNaN(money)) {
+          money =  formatter.format(money);
+          $(this).val(money);
+
+      } else {
+              if(money !== "undefined" || money !== null){
+
+                                var dot = new RegExp(".");
+                                if(dot.test(money)){
+                                    var amount = money.replace(/[^0-9]+/g,"");
+                                    amount = amount.slice(0,-2);
+                                }
+                                    amount =  formatter.format(amount);
+                                    $('.currency-format').val(amount);
+              }else{
+                  alert("Please fill digits only");
+              }
+      }
+     });
+  });
+
+  /*
+  // currency formatting on change of country
+                       $('.currency').change( function() {
+                             let currencySymbol = $('.currency').val();
+                             let currencyCoin = $('.currency option:selected').text();
+                             let money = $(this).val();
+
+                             var formatter = new Intl.NumberFormat(currencySymbol,{
+                                                   style: 'currency',
+                                                   currency: currencyCoin,
+                                                   minimumFractionDigits: 2
+                                                 });
+                             if (!isNaN(money)) {
+                                 money =  formatter.format(money);
+                                 $(this).val(money);
+
+                             } else {
+                               if(money !== undefined || money !== null){
+                               var amount = Number(money.replace(/[^0-9.-]+/g,""));
+                                   amount =  formatter.format(money);
+                                   $(this).val(amount);
+                               }else{
+                                    alert("Please fill digits only");
+                               }
+                             }
+                       });
+
+                       //currency format will change on change of amount
+                       $('.currency-format').change( function() {
+                             let currencySymbol = $('.currency').val();
+                             let currencyCoin = $('.currency option:selected').text();
+                             let money = $(this).val();
+
+                             var formatter = new Intl.NumberFormat(currencySymbol,{
+                                                   style: 'currency',
+                                                   currency: currencyCoin,
+                                                   minimumFractionDigits: 2
+                                                 });
+                             if (!isNaN(money)) {
+                                 money =  formatter.format(money);
+                                 $(this).val(money);
+
+                             } else {
+                               if(money !== undefined || money !== null ){
+                               var amount = Number(money.replace(/[^0-9.-]+/g,""));
+                                   amount =  formatter.format(money);
+                                   $(this).val(amount);
+                               }else{
+                                    alert("Please fill digits only");
+                               }
+                             }
+                       });
+  */
+</script>

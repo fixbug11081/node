@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "product_id": "12233",
+      "product_name": "pen",
+      "sku_code": "sku101",
+      "price": "20"
+    },
+    {
+      "product_id": "12233",
+      "product_name": "pen",
+      "sku_code": "sku101",
+      "price": "20"
+    },
+     {
+      "product_id": "12233",
+      "product_name": "pen",
+      "sku_code": "sku101",
+      "price": "20"
+    },
+    {
+      "product_id": "12233",
+      "product_name": "pen",
+      "sku_code": "sku101",
+      "price": "20"
+    },
+  ]
+
+}

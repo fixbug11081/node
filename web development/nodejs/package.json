@@ -1,0 +1,17 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "intro to noe",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "superheroes": "^3.0.0",
+    "supervillains": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ajeet (http://haile.com)",
+  "license": "ISC"
+}
